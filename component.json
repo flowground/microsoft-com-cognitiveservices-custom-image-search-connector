@@ -1,0 +1,55 @@
+{
+    "title": "Custom Image Search Client",
+    "description": "The Bing Custom Image Search API lets you send an image search query to Bing and get back image search results customized to meet your custom search definition.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/microsoft.com/cognitiveservices-CustomImageSearch/1.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://api.cognitive.microsoft.com/bingcustomsearch/v7.0",
+                    "{Endpoint}",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "apiKeyHeader": {
+                "label": "Ocp-Apim-Subscription-Key (apiKeyHeader)",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "CustomInstance_ImageSearch": {
+            "main": "./lib/actions/CustomInstance_ImageSearch.js",
+            "title": "The Custom Image Search API lets you send an image search query to Bing and get image results found in your custom view of the web.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CustomInstance_ImageSearch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
